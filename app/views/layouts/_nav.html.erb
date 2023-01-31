@@ -1,0 +1,78 @@
+<div class="space-x-2 justify-center md:hidden hidden sidebar-toggle">
+  <button 
+    type="button" 
+    class="inline-block h-12 w-12 m-2 py-2.5 bg-blue-600 font-medium text-lg leading-tight rounded shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-150 ease-in-out"
+    onclick="openSidebar()"
+    ><i class="fa-solid fa-bars-staggered"></i>
+  </button>
+</div>
+
+<aside class="sidebar h-screen relative p-2 w-[300px] min-w-[230px] bg-outer-space-400 dark:bg-jelly-bean-800 text-soft-red-50">
+    <div class="block">
+        <h1 class="font-medium drop-shadow-sm shadow-black text-xl float-left ml-2 mt-1 text-gimblet-50 dark:text-gimblet-300"><i class="fa-solid fa-file-signature mr-2"></i>PlayerIntegrity</h1>
+
+        <button 
+            type="button" 
+            class="inline-block h-7 w-7 mt-1 md:hidden float-right bg-blue-600 font-medium text-md leading-tight rounded shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-150 ease-in-out"
+            onclick="openSidebar()"
+            ><i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <div class="table w-full space-y-3">
+        <hr class="mb-5 mt-2 border-soft-red-200" />
+
+        <a
+            href="/"
+            class="p-2 my-3 w-full flex space-x-3 items-center rounded hover:bg-blue-800 hover:shadow-lg transition duration-150 ease-in-out"
+            >
+                <i class="fa-solid fa-house-chimney"></i>
+                <span>Home</span>
+        </a>
+
+        <button 
+            type="button" 
+            class="p-2 my-3 w-full flex space-x-3 items-center rounded hover:bg-blue-800 hover:shadow-lg transition duration-150 ease-in-out"
+            onclick="dropdown()"
+            >
+                <i class="fa-solid fa-server"></i>
+                <span>Your Networks</span>
+                <div class="relative float-right rotate-180" id="arrow">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+        </button>
+
+        <div class="text-left text-sm mt-2 w-4/5 mx-auto font-bold" id="submenu">
+            <h1 class="cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                Test
+            </h1>
+        </div>
+
+        <hr class="border-soft-red-200" />
+
+        <a
+            href="<%= destroy_user_session_path %>"
+            class="p-2 my-3 w-full flex space-x-3 items-center rounded hover:bg-blue-800 hover:shadow-lg transition duration-150 ease-in-out"
+            >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sign Out</span>
+        </a>
+    </div>
+</aside>
+
+<script type="text/javascript">
+    function dropdown() {
+    document.querySelector("#submenu").classList.toggle("hidden");
+    document.querySelector("#arrow").classList.toggle("rotate-0");
+    }
+    dropdown();
+
+    function openSidebar() {
+    document.querySelector(".sidebar").classList.toggle("hidden");
+    document.querySelector(".sidebar-toggle").classList.toggle("hidden");
+    }
+
+    if ($(window).width() < 700) {
+        openSidebar();
+    }
+</script>
