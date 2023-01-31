@@ -1,0 +1,49 @@
+<%= render "devise/shared/error", resource: resource %>
+
+<div class="flex items-center">
+      <div
+        class="flex-1 h-full max-w-xl mx-auto overflow-hidden bg-outer-space-400 text-onahau dark:text-soft-red-50 rounded-lg shadow-xl"
+      >
+        <div class="flex flex-col overflow-y-auto md:flex-row">
+          <div class="flex flex-1 items-center justify-center p-6 sm:p-12 md:w-1/2">
+            <div class="w-full">
+              <div class="flex font-medium drop-shadow-lg shadow-black justify-center leading-tight text-3xl my-3 space-x-2 text-gimblet-50 dark:text-gimblet-300">
+                <i class="fa-solid fa-file-signature"></i>
+                <h1 class="">PlayerIntegrity</h1>
+              </div>
+
+              <h2 class="mt-4 text-2xl font-semibold">Reset Password</h2>
+              <hr class="mb-6 mt-2 border-soft-red-200" />
+
+              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                <div class="text-sm space-y-3">
+                  <label class="block">
+                      <span class="text-lg">Email</span>
+                      <input
+                        class="block w-full mt-1 dark:border-gray-600 dark:bg-gray-700 focus:border-primary-400 focus:outline-none focus:shadow-outline-primary dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        placeholder="jane@gmail.com"
+                        autofocus="autofocus"
+                        autocomplete="email"
+                        type="email"
+                        name="user[email]"
+                        id="user_email"
+                      />
+                  </label>
+
+                  <div class="flex space-x-2 justify-center py-2">
+                      <button
+                          class="px-6 py-2.5 bg-blue-900 font-medium text-sm leading-tight rounded shadow-md hover:bg-slate-700 hover:shadow-lg active:bg-slate-600 active:shadow-lg" 
+                          type="submit"
+                          name="commit">
+                          <i class="fa-solid fa-paper-plane"></i> Send Instructions
+                      </button>
+                  </div>
+                </div>
+              <% end %>
+
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

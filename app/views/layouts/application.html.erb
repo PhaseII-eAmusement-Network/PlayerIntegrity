@@ -1,18 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Set the title -->
     <title>PlayerIntegrity</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+
+    <!-- Load JQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+
+    <!-- Set meta tags -->
+    <meta name="title" content="PlayerIntegrity">
+    <meta name="description" content="A user data integrity checker">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import Tailwind -->
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <!-- Tailwind Elements -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+
+    <!-- Load Font-Awesome -->
+    <script src="https://kit.fontawesome.com/6ac6394f85.js" crossorigin="anonymous"></script>
+    
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="min-h-screen p-6 bg-gradient-to-b from-onahau to-onahau-200 dark:from-outer-space dark:to-outer-space-600 animate-gradient-y text-spectra-600 dark:text-soft-red-50">
+      <!-- Error Message -->
+      <div class="text-slate-800 dark:text-slate-100">
+        <% if notice %>
+          <div class="bg-yellow-300 dark:bg-yellow-800 rounded-lg py-4 px-5 mb-4 text-base inline-flex shadow-xl items-center w-full" role="alert">
+            <i class="fa-regular fa-circle-xmark pr-3"></i>
+            <%= notice %>
+          </div>
+        <% end %>
+
+        <% if alert %>
+          <div class="bg-red-300 dark:bg-red-800 rounded-lg py-4 px-5 mb-4 text-base inline-flex shadow-xl items-center w-full" role="alert">
+            <i class="fa-regular fa-circle-xmark pr-3"></i>
+            <%= alert %>
+          </div>
+        <% end %>
+      </div>
+
       <%= yield %>
     </main>
   </body>

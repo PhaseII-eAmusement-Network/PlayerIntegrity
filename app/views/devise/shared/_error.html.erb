@@ -1,0 +1,11 @@
+<!-- Error Message -->
+<div class="text-slate-800 dark:text-slate-100">
+<% if resource.errors.any? %>
+    <% resource.errors.full_messages.each do |message| %>
+    <div class="bg-red-300 dark:bg-red-800 rounded-lg py-4 px-5 mb-4 text-base inline-flex shadow-xl items-center w-full" role="alert">
+        <i class="fa-regular fa-circle-xmark pr-3"></i>
+        <%= message %>
+    </div>
+    <% end %>
+<% end %>
+</div>

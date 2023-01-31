@@ -1,0 +1,55 @@
+<hr class="my-4 border-soft-red-200" />
+
+<div class="block space-y-1 text-md">
+  <%- if controller_name != 'sessions' %>
+    <div class="flex space-x-1">
+      <p>Already have an account?</p>
+      <div class="underline-offset-2 hover:underline transition duration-500 text-soft-red-300">
+        <%= link_to "Sign in", new_session_path(resource_name) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <div class="flex space-x-1">
+      <p>No account?</p>
+      <div class="underline-offset-2 hover:underline transition duration-500 text-soft-red-300">
+        <%= link_to "Sign up", new_registration_path(resource_name) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <div class="flex space-x-1">
+      <p>Forgot your password?</p>
+      <div class="underline-offset-2 hover:underline transition duration-500 text-soft-red-300">
+        <%= link_to "Reset password", new_password_path(resource_name) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+    <div class="flex space-x-1">
+      <p>Didn't receive confirmation instructions?</p>
+      <div class="underline-offset-2 hover:underline transition duration-500 text-soft-red-300">
+        <%= link_to "Resend", new_confirmation_path(resource_name) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+    <div class="flex space-x-1">
+      <p>Didn't receive unlock instructions?</p>
+      <div class="underline-offset-2 hover:underline transition duration-500 text-soft-red-300">
+        <%= link_to "Resend", new_unlock_path(resource_name) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %>
+    <% end %>
+  <% end %>
+
+</div>
